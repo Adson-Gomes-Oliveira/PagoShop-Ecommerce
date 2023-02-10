@@ -7,6 +7,6 @@ const app = express()
 app.use(express.json());
 app.use(helmet());
 app.use(cors());
-app.get('/health-check', (req, _res) => req.setEncoding('OK!'));
+app.get('/health-check', (_req, res) => res.send('OK!'));
 
 module.exports = app;
