@@ -10,14 +10,14 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       value: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
       },
       buyerName: {
         type: Sequelize.STRING,
         field: 'buyer_name',
       },
       cardNumber: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         field: 'card_number',
       },
       expirationDate: {
