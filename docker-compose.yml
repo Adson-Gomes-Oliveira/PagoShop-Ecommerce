@@ -24,6 +24,17 @@ services:
       - DB_HOST=mongo-database
     depends_on:
       - mongo-database
+  finance-container:
+    container_name: finance-ecomm
+    build: ./finance/
+    ports:
+      - 3004:3004
+    volumes:
+      - ./:/app-finance
+    environment:
+      - PORT=3004
+    depends_on:
+      - mysql-database
   mongo-database:
     container_name: 'mongo-ecomm'
     image: mongo:5
