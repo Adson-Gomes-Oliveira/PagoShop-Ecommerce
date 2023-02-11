@@ -30,7 +30,7 @@ services:
     ports:
       - 3004:3004
     volumes:
-      - ./finance:/app/account
+      - ./finance:/app/finance
     environment:
       - PORT=3004
       - DB_HOST=mysql-database
