@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (sequelize, DataTypes) => {
+const Payments = (sequelize, DataTypes) => {
   const Payments = sequelize.define('Payments', {
     value: DataTypes.FLOAT,
     buyerName: DataTypes.STRING,
@@ -15,5 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
-  return Payments;
+  return Payments
 }
+
+module.exports = Payments

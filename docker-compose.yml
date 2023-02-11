@@ -6,7 +6,7 @@ services:
     ports:
       - 3001:3001
     volumes:
-      - ./:/app/product
+      - ./product:/app/product
     environment:
       - PORT=3001
       - DB_HOST=mongo-database
@@ -18,7 +18,7 @@ services:
     ports:
       - 3002:3002
     volumes:
-      - ./:/app/account
+      - ./account:/app/account
     environment:
       - PORT=3002
       - DB_HOST=mongo-database
@@ -30,9 +30,10 @@ services:
     ports:
       - 3004:3004
     volumes:
-      - ./:/app/account
+      - ./finance:/app/account
     environment:
       - PORT=3004
+      - DB_HOST=mysql-database
     depends_on:
       - mysql-database
   mongo-database:
