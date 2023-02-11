@@ -27,8 +27,22 @@ const create = async (req, res) => {
     .json(response);
 }
 
+const changePaymentStatus = async (req, res) => {
+  const { id } = req.params;
+  let { status } = req.body;
+  status = status.toUpperCase();
+
+  const valid = validations.statusValidation(status);
+  if (valid) return res.status(valid.code).send(valid.message);
+  await Payments.update({ status }, { where: { id } });
+  const payment = await Payments.findByPk(id);
+
+  return res.status(HTTPStatus.OK).json(payment.status);
+}
+
 module.exports = {
   findAll,
   findById,
   create,
+  changePaymentStatus,
 }

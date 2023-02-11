@@ -14,6 +14,16 @@ const payloadValidation = (payload) => {
   return null;
 }
 
+const statusValidation = (status) => {
+  const { error } = JOI.object({
+    status: JOI.string().pattern(new RegExp('^(CREATED|CONFIRMED|CANCELED)$')).required(),
+  }).validate({status});
+
+  if (error) return { code: HTTPStatus.UN_ENTITY, message: error.message };
+  return null;
+}
+
 module.exports = {
   payloadValidation,
+  statusValidation,
 }
