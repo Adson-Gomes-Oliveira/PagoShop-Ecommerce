@@ -15,6 +15,13 @@ const Payments = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
+  Payments.associate = (models) => {
+    Payments.hasOne(models.Invoices, {
+      as: 'invoices',
+      foreignKey: 'payment_id'
+    })
+  }
+
   return Payments
 }
 

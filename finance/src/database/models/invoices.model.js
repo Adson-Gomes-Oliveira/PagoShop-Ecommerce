@@ -13,7 +13,7 @@ const Invoices = (sequelize, DataTypes) => {
   });
 
   Invoices.associate = (models) => {
-    Invoices.belongsToOne(models.Payments, {
+    Invoices.belongsTo(models.Payments, {
       as: 'payments',
       foreignKey: 'paymentId',
     })
