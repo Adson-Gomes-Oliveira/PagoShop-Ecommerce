@@ -1,3 +1,4 @@
+const database = require('../database/models');
 const { Payments, Invoices } = require('../database/models');
 const HTTPStatus =  require('../../helpers/HTTP.status');
 const validations = require('../validations/payment.validations');
@@ -20,11 +21,13 @@ const create = async (req, res) => {
   const valid = validations.payloadValidation(payload);
   if (valid) return res.status(valid.code).send(valid.message);
 
-  const response = await Payments.create(payload);
-  return res
-    .status(HTTPStatus.CREATED)
-    .header({location: `/api/payments/${response.id}`})
-    .json(response);
+  database.sequelize.transaction(async (t) => {
+    const response = await Payments.create(payload, { transaction: t });
+    return res
+      .status(HTTPStatus.CREATED)
+      .header({location: `/api/payments/${response.id}`})
+      .json(response);
+  })
 }
 
 const confirmPayment = async (req, res) => {
@@ -33,22 +36,35 @@ const confirmPayment = async (req, res) => {
 
   const valid = validations.confirmPaymentValidation(payload);
   if (valid) return res.status(valid.code).send(valid.message);
-  await Payments.update({ status: 'CONFIRMED' }, { where: { id } });
 
-  const response = await Invoices.create(payload);
-  return res.status(HTTPStatus.OK).json(response);
+  database.sequelize.transaction(async (t) => {
+    await Payments.update(
+      { status: 'CONFIRMED' },
+      { where: { id } },
+      { transaction: t }
+    );
+  
+    const response = await Invoices.create(payload, { transaction: t });
+    return res.status(HTTPStatus.OK).json(response);
+  })
 }
 
 const cancelPayment = async (req, res) => {
   const { id } = req.params;
 
-  await Payments.update({ status: 'CANCELED' }, { where: { id } });
-  const paymentCanceled = await Payments.findByPk(id);
-
-  return res.status(HTTPStatus.OK).json({
-    id: paymentCanceled.id,
-    status: paymentCanceled.status,
-  });
+  database.sequelize.transaction(async (t) => {
+    await Payments.update(
+      { status: 'CANCELED' },
+      { where: { id } },
+      { transaction: t }
+    );
+    const paymentCanceled = await Payments.findByPk(id);
+  
+    return res.status(HTTPStatus.OK).json({
+      id: paymentCanceled.id,
+      status: paymentCanceled.status,
+    });
+  })
 }
 
 module.exports = {
