@@ -27,22 +27,35 @@ const create = async (req, res) => {
     .json(response);
 }
 
-const changePaymentStatus = async (req, res) => {
+const confirmPayment = async (req, res) => {
   const { id } = req.params;
-  let { status } = req.body;
-  status = status.toUpperCase();
+  const payload = req.body;
 
-  const valid = validations.statusValidation(status);
+  const valid = validations.confirmPaymentValidation(payload);
   if (valid) return res.status(valid.code).send(valid.message);
-  await Payments.update({ status }, { where: { id } });
-  const payment = await Payments.findByPk(id);
+  await Payments.update({ status: 'CONFIRMED' }, { where: { id } });
 
-  return res.status(HTTPStatus.OK).json(payment.status);
+  // Criar nota fiscal e recuperar status;
+
+  return res.status(HTTPStatus.OK).json();
+}
+
+const cancelPayment = async (req, res) => {
+  const { id } = req.params;
+
+  await Payments.update({ status: 'CANCELED' }, { where: { id } });
+  const paymentCanceled = await Payments.findByPk(id);
+
+  return res.status(HTTPStatus.OK).json({
+    id: paymentCanceled.id,
+    status: paymentCanceled.status,
+  });
 }
 
 module.exports = {
   findAll,
   findById,
   create,
-  changePaymentStatus,
+  confirmPayment,
+  cancelPayment,
 }
