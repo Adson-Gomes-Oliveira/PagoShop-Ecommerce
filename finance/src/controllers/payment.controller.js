@@ -1,4 +1,4 @@
-const { Payments } = require('../database/models');
+const { Payments, Invoices } = require('../database/models');
 const HTTPStatus =  require('../../helpers/HTTP.status');
 const validations = require('../validations/payment.validations');
 
@@ -35,9 +35,8 @@ const confirmPayment = async (req, res) => {
   if (valid) return res.status(valid.code).send(valid.message);
   await Payments.update({ status: 'CONFIRMED' }, { where: { id } });
 
-  // Criar nota fiscal e recuperar status;
-
-  return res.status(HTTPStatus.OK).json();
+  const response = await Invoices.create(payload);
+  return res.status(HTTPStatus.OK).json(response);
 }
 
 const cancelPayment = async (req, res) => {

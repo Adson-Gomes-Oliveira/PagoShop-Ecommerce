@@ -17,13 +17,13 @@ const payloadValidation = (payload) => {
 const confirmPaymentValidation = (payload) => {
   const { error } = JOI.object({
     name: JOI.string().required(),
-    cpf: JOI.number().min(11).max(11).required(),
-    payment_id: JOI.number().required(),
+    cpf: JOI.number().required(),
+    paymentId: JOI.number().required(),
     description: {
       buyerAddress: {
         street: JOI.string().required(),
         number: JOI.string().required(),
-        cep: JOI.number().min(8).max(8).required(),
+        cep: JOI.number().required(),
         city: JOI.string().required(),
         state: JOI.string().min(2).max(2).pattern(new RegExp('^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)$')).required(),
       },
