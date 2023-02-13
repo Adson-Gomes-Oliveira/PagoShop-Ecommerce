@@ -10,7 +10,7 @@ const app = express()
 app.use(express.json());
 app.use(helmet());
 app.use(cors());
-app.get('/health-check', (_req, res) => res.send('OK!'));
+app.get('/health-check', (_req, res) => res.status(200).send('Connection OK'));
 app.use('/api/payments', paymentRoutes);
 app.use(errorMiddleware);
 
