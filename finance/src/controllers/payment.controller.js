@@ -1,7 +1,7 @@
 const database = require('../database/models');
 const { Payments, Invoices } = require('../database/models');
-const HTTPStatus =  require('../../helpers/HTTP.status');
-const validations = require('../validations/payment.validations');
+const HTTPStatus =  require('../helpers/HTTP.status');
+const validate = require('../validations/payment.validations');
 
 const findAll = async (_req, res) => {
   const response = await Payments.findAll();
@@ -18,8 +18,7 @@ const findById = async (req, res) => {
 
 const create = async (req, res) => {
   const payload = req.body;
-  const valid = validations.payloadValidation(payload);
-  if (valid) return res.status(valid.code).send(valid.message);
+  validate.payloadValidation(payload);
 
   database.sequelize.transaction(async (t) => {
     const response = await Payments.create(payload, { transaction: t });
@@ -33,9 +32,7 @@ const create = async (req, res) => {
 const confirmPayment = async (req, res) => {
   const { id } = req.params;
   const payload = req.body;
-
-  const valid = validations.confirmPaymentValidation(payload);
-  if (valid) return res.status(valid.code).send(valid.message);
+  validate.confirmPaymentValidation(payload);
 
   database.sequelize.transaction(async (t) => {
     await Payments.update(

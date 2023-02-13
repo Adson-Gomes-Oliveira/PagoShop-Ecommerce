@@ -1,5 +1,6 @@
 const JOI = require('joi');
-const HTTPStatus = require('../../helpers/HTTP.status');
+const HTTPStatus = require('../helpers/HTTP.status');
+const customError = require('../helpers/error.custom');
 
 const payloadValidation = (payload) => {
   const { error } = JOI.object({
@@ -10,7 +11,7 @@ const payloadValidation = (payload) => {
     cvv: JOI.number().required(),
   }).validate(payload);
 
-  if (error) return { code: HTTPStatus.UN_ENTITY, message: error.message };
+  if (error) throw customError(error.message, HTTPStatus.UN_ENTITY);
   return null;
 }
 
@@ -35,7 +36,7 @@ const confirmPaymentValidation = (payload) => {
     },
   }).validate(payload);
 
-  if (error) return { code: HTTPStatus.UN_ENTITY, message: error.message };
+  if (error) throw customError(error.message, HTTPStatus.UN_ENTITY);
   return null;
 }
 
