@@ -3,6 +3,7 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 const paymentRoutes = require('./routes/payment.routes');
+const errorMiddleware = require('./middlewares/error.middleware');
 
 const app = express()
 
@@ -11,5 +12,6 @@ app.use(helmet());
 app.use(cors());
 app.get('/health-check', (_req, res) => res.send('OK!'));
 app.use('/api/payments', paymentRoutes);
+app.use(errorMiddleware);
 
 module.exports = app;

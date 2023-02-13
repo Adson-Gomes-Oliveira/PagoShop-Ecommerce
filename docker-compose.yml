@@ -24,6 +24,18 @@ services:
       - DB_HOST=mongo-database
     depends_on:
       - mongo-database
+  order-container:
+    container_name: order-ecomm
+    build: ./order/
+    ports:
+      - 3003:3003
+    volumes:
+      - ./order:/app/order
+    environment:
+      - PORT=3003
+      - DB_HOST=mysql-database
+    depends_on:
+      - mysql-database
   finance-container:
     container_name: finance-ecomm
     build: ./finance/
