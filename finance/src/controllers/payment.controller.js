@@ -33,17 +33,20 @@ const confirmPayment = async (req, res) => {
   const { id } = req.params;
   const payload = req.body;
   validate.confirmPaymentValidation(payload);
-
-  database.sequelize.transaction(async (t) => {
-    await Payments.update(
-      { status: 'CONFIRMED' },
-      { where: { id } },
-      { transaction: t }
-    );
-  
-    const response = await Invoices.create(payload, { transaction: t });
-    return res.status(HTTPStatus.OK).json(response);
-  })
+  try {
+    database.sequelize.transaction(async (t) => {
+      await Payments.update(
+        { status: 'CONFIRMED' },
+        { where: { id } },
+        { transaction: t }
+      );
+    
+      const response = await Invoices.create(payload, { transaction: t });
+      return res.status(HTTPStatus.OK).json(response);
+    })
+  } catch(error) {
+    throw
+  }
 }
 
 const cancelPayment = async (req, res) => {

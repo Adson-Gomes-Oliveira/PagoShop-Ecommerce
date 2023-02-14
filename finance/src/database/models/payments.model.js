@@ -1,5 +1,6 @@
 'use strict';
-
+// FLOAT -> DECIMAL(10, 2)
+// Validar credit card
 const Payments = (sequelize, DataTypes) => {
   const Payments = sequelize.define('Payments', {
     value: DataTypes.FLOAT,

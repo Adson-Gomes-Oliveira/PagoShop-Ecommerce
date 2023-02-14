@@ -20,11 +20,11 @@ const confirmPaymentValidation = (payload) => {
     name: JOI.string().required(),
     cpf: JOI.number().required(),
     paymentId: JOI.number().required(),
-    description: {
+    description: JOI.object({
       buyerAddress: {
         street: JOI.string().required(),
         number: JOI.string().required(),
-        cep: JOI.number().required(),
+        cep: JOI.number().required(), // trocar para string
         city: JOI.string().required(),
         state: JOI.string().min(2).max(2).pattern(new RegExp('^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)$')).required(),
       },
@@ -33,7 +33,7 @@ const confirmPaymentValidation = (payload) => {
         quantity: JOI.number().required(),
         price: JOI.number().required(),
       })),
-    },
+    }).required(),
   }).validate(payload);
 
   if (error) throw customError(error.message, HTTPStatus.UN_ENTITY);
