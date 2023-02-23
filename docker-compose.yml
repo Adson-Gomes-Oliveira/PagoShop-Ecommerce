@@ -6,10 +6,10 @@ services:
     ports:
       - 3001:3001
     volumes:
-      - ./product:/app/product
+      - ./product/:/app/product
     environment:
       - PORT=3001
-      - DB_HOST=mongo-database
+      - DB_HOST=127.0.0.1
     depends_on:
       - mongo-database
   account-container:
