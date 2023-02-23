@@ -1,14 +1,13 @@
 const JOI = require('joi');
-const HTTPStatus = require('../../helpers/HTTP.status');
-
+const HTTPStatus = require('../helpers/HTTP.status');
+const customError = require('../helpers/error.custom');
 
 const create = (payload) => {
   const { error } = JOI.object({
     name: JOI.string().min(3).pattern(new RegExp(/^[^0-9]/)).required()
   }).validate(payload);
 
-  if (error) return { status: HTTPStatus.UN_ENTITY, message: error.message };
-  return null;
+  if (error) throw customError(error.message, HTTPStatus.UN_ENTITY);
 }
 
 const edit = (payload) => {
@@ -17,21 +16,19 @@ const edit = (payload) => {
     status: JOI.string().pattern(new RegExp('^(active|inactive)$')).required(),
   }).validate(payload);
 
-  if (error) return { status: HTTPStatus.UN_ENTITY, message: error.message };
-  return null;
+  if (error) throw customError(error.message, HTTPStatus.UN_ENTITY);
 }
 
-const editOne = (payload) => {
+const editStatus = (payload) => {
   const { error } = JOI.object({
     status: JOI.string().pattern(new RegExp('^(active|inactive)$')).required(),
   }).validate(payload);
 
-  if (error) return { status: HTTPStatus.UN_ENTITY, message: error.message };
-  return null;
+  if (error) throw customError(error.message, HTTPStatus.UN_ENTITY);
 }
 
 module.exports = {
   create,
   edit,
-  editOne,
+  editStatus,
 }

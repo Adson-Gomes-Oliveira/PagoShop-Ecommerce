@@ -1,7 +1,7 @@
-const productsRoutes = require('./products.routes');
-const productsAdminRoutes = require('./products.admin.routes');
+const accountsRoutes = require('./accounts.routes');
+const accountsAdminRoutes = require('./accounts.admin.routes');
 
 module.exports = {
-  productsRoutes,
-  productsAdminRoutes,
+  accountsRoutes,
+  accountsAdminRoutes,
 }
