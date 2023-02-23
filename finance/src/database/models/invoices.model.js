@@ -3,7 +3,7 @@
 const Invoices = (sequelize, DataTypes) => {
   const Invoices = sequelize.define('Invoices', {
     name: DataTypes.STRING,
-    cpf: DataTypes.BIGINT,
+    cpf: DataTypes.STRING,
     description: DataTypes.JSON,
     paymentId: DataTypes.INTEGER,
   }, {

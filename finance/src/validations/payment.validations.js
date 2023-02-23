@@ -4,11 +4,11 @@ const customError = require('../helpers/error.custom');
 
 const payloadValidation = (payload) => {
   const { error } = JOI.object({
-    value: JOI.number().min(1).required(),
+    value: JOI.string().required(),
     buyerName: JOI.string().required(),
-    cardNumber: JOI.number().required(),
+    cardNumber: JOI.string().required(),
     expirationDate: JOI.date().required(),
-    cvv: JOI.number().required(),
+    cvv: JOI.string().required(),
   }).validate(payload);
 
   if (error) throw customError(error.message, HTTPStatus.UN_ENTITY);
@@ -18,13 +18,13 @@ const payloadValidation = (payload) => {
 const confirmPaymentValidation = (payload) => {
   const { error } = JOI.object({
     name: JOI.string().required(),
-    cpf: JOI.number().required(),
+    cpf: JOI.string().required(),
     paymentId: JOI.number().required(),
     description: JOI.object({
       buyerAddress: {
         street: JOI.string().required(),
         number: JOI.string().required(),
-        cep: JOI.number().required(), // trocar para string
+        cep: JOI.string().required(), // trocar para string
         city: JOI.string().required(),
         state: JOI.string().min(2).max(2).pattern(new RegExp('^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)$')).required(),
       },

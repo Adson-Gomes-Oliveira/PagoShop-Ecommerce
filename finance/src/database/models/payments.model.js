@@ -3,11 +3,11 @@
 // Validar credit card
 const Payments = (sequelize, DataTypes) => {
   const Payments = sequelize.define('Payments', {
-    value: DataTypes.FLOAT,
+    value: DataTypes.DECIMAL(10, 2),
     buyerName: DataTypes.STRING,
-    cardNumber: DataTypes.BIGINT,
+    cardNumber: DataTypes.STRING,
     expirationDate: DataTypes.DATE,
-    cvv: DataTypes.INTEGER,
+    cvv: DataTypes.STRING,
     status: DataTypes.STRING,
     transactDate: DataTypes.DATE,
   }, {
