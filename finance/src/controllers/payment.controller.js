@@ -1,6 +1,6 @@
 const database = require('../database/models');
 const { Payments, Invoices } = require('../database/models');
-const HTTPStatus =  require('../helpers/HTTP.status');
+const HTTPStatus = require('../helpers/HTTP.status');
 const validate = require('../validations/payment.validations');
 
 const findAll = async (_req, res) => {
@@ -11,10 +11,10 @@ const findAll = async (_req, res) => {
 const findById = async (req, res) => {
   const { id } = req.params;
   const response = await Payments.findByPk(id);
-  const { cvv:_, ...responseWithoutCVV } = response.dataValues;
+  const { cvv: _, ...responseWithoutCVV } = response.dataValues;
 
   return res.status(HTTPStatus.OK).json(responseWithoutCVV);
-}
+};
 
 const create = async (req, res) => {
   const payload = req.body;
@@ -24,10 +24,10 @@ const create = async (req, res) => {
     const response = await Payments.create(payload, { transaction: t });
     return res
       .status(HTTPStatus.CREATED)
-      .header({location: `/api/payments/${response.id}`})
+      .header({ location: `/api/payments/${response.id}` })
       .json(response);
-  })
-}
+  });
+};
 
 const confirmPayment = async (req, res) => {
   const { id } = req.params;
@@ -38,13 +38,13 @@ const confirmPayment = async (req, res) => {
     await Payments.update(
       { status: 'CONFIRMED' },
       { where: { id } },
-      { transaction: t }
+      { transaction: t },
     );
-  
+
     const response = await Invoices.create(payload, { transaction: t });
     return res.status(HTTPStatus.OK).json(response);
   });
-}
+};
 
 const cancelPayment = async (req, res) => {
   const { id } = req.params;
@@ -53,16 +53,16 @@ const cancelPayment = async (req, res) => {
     await Payments.update(
       { status: 'CANCELED' },
       { where: { id } },
-      { transaction: t }
+      { transaction: t },
     );
     const paymentCanceled = await Payments.findByPk(id);
-  
+
     return res.status(HTTPStatus.OK).json({
       id: paymentCanceled.id,
       status: paymentCanceled.status,
     });
-  })
-}
+  });
+};
 
 module.exports = {
   findAll,
@@ -70,4 +70,4 @@ module.exports = {
   create,
   confirmPayment,
   cancelPayment,
-}
+};
