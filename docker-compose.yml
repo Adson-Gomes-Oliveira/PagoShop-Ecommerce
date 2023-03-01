@@ -9,7 +9,7 @@ services:
       - ./product/:/app/product
     environment:
       - PORT=3001
-      - DB_HOST=127.0.0.1
+      - DB_HOST=mongo-database
     depends_on:
       - mongo-database
   account-container:
