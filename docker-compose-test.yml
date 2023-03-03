@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  mysql-test-database:
+    container_name: 'mysql-ecomm-test'
+    image: mysql:8
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+  mongo-test-database:
+    container_name: 'mongo-ecomm-test'
+    image: mongo:5
+    ports:
+      - 27018:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=secret
