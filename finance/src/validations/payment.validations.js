@@ -4,7 +4,7 @@ const customError = require('../helpers/error.custom');
 
 const payloadValidation = (payload) => {
   const { error } = JOI.object({
-    value: JOI.string().required(),
+    value: JOI.number().required(),
     buyerName: JOI.string().required(),
     cardNumber: JOI.string().required(),
     expirationDate: JOI.date().required(),
