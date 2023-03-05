@@ -4,10 +4,11 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('invoices', [
       {
+        id: Sequelize.literal('DEFAULT'),
         name: 'Sarah Araujo',
         cpf: '42942304790',
         payment_id: 1,
-        description: {
+        description: JSON.stringify({
           buyerAddress: {
             street: 'Caminho 3, Bairro Cincop',
             number: '166',
@@ -22,7 +23,7 @@ module.exports = {
               price: 1999.99,
             },
           ],
-        },
+        }),
       },
     ]);
   },
