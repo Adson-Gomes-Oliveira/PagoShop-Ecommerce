@@ -20,13 +20,11 @@ const create = async (req, res) => {
   const payload = req.body;
   validate.payloadValidation(payload);
 
-  database.sequelize.transaction(async (t) => {
-    const response = await Payments.create(payload, { transaction: t });
-    return res
-      .status(HTTPStatus.CREATED)
-      .header({ location: `/api/payments/${response.id}` })
-      .json(response);
-  });
+  const response = await Payments.create(payload);
+  return res
+    .status(HTTPStatus.CREATED)
+    .header({ location: `/api/payments/${response.id}` })
+    .json(response);
 };
 
 const confirmPayment = async (req, res) => {
