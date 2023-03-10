@@ -8,6 +8,7 @@ services:
     volumes:
       - ./product/:/app/product
     environment:
+      - JWT_SECRET=senhasecretadodocker
       - PORT=3001
       - DB_HOST=mongo-database
     depends_on:
@@ -20,6 +21,7 @@ services:
     volumes:
       - ./account:/app/account
     environment:
+      - JWT_SECRET=senhasecretadodocker
       - PORT=3002
       - DB_HOST=mongo-database
     depends_on:
@@ -32,6 +34,7 @@ services:
     volumes:
       - ./order:/app/order
     environment:
+      - JWT_SECRET=senhasecretadodocker
       - PORT=3003
       - DB_HOST=mysql-database
       - PAYMENT_HOST=finance-container
@@ -47,6 +50,7 @@ services:
     volumes:
       - ./finance:/app/finance
     environment:
+      - JWT_SECRET=senhasecretadodocker
       - PORT=3004
       - DB_HOST=mysql-database
     depends_on:
