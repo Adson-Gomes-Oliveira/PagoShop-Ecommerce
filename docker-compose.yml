@@ -74,6 +74,13 @@ services:
       - MYSQL_ROOT_PASSWORD=secret
     volumes:
       - mysql-ecomm-volume:/var/lib/mysql
+  redis-database:
+    container_name: 'redis_ecomm'
+    image: redis:7
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-ecomm-volume:/data
   mysql-test-database:
     container_name: 'mysql-ecomm-test'
     image: mysql:8
@@ -92,3 +99,4 @@ services:
 volumes:
   mysql-ecomm-volume:
   mongo-ecomm-volume:
+  redis-ecomm-volume:
