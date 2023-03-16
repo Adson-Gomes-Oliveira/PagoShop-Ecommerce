@@ -24,8 +24,10 @@ services:
       - JWT_SECRET=senhasecretadodocker
       - PORT=3002
       - DB_HOST=mongo-database
+      - REDIS_HOST=redis-database
     depends_on:
       - mongo-database
+      - redis-database
   order-container:
     container_name: order-ecomm
     build: ./order/
@@ -55,6 +57,40 @@ services:
       - DB_HOST=mysql-database
     depends_on:
       - mysql-database
+  frontend-container:
+    container_name: frontend-ecomm
+    build: ./frontend/
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend/:/app/frontend
+    environment:
+      # products_envs
+      - REACT_APP_PRODUCTS_HOST=product-container
+      - REACT_APP_PRODUCTS_PORT=3001
+      - REACT_APP_PRODUCTS_BASEURL=api/products
+
+    # categories_envs
+      - REACT_APP_CATEGORIES_HOST=product-container
+      - REACT_APP_CATEGORIES_PORT=3001
+      - REACT_APP_CATEGORIES_BASEURL=api/categories
+
+    # login_envs
+      - REACT_APP_LOGIN_HOST=account-container
+      - REACT_APP_LOGIN_PORT=3002
+      - REACT_APP_LOGIN_BASEURL=api/accounts/login
+
+    # logout_envs
+      - REACT_APP_LOGOUT_HOST=account-container
+      - REACT_APP_LOGOUT_PORT=3002
+      - REACT_APP_LOGOUT_BASEURL=api/accounts/logout
+    depends_on:
+      - mongo-database
+      - mysql-database
+      - account-container
+      - order-container
+      - finance-container
+      - product-container
   mongo-database:
     container_name: 'mongo-ecomm'
     image: mongo:5
