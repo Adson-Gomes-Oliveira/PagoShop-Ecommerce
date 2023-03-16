@@ -1,3 +1,4 @@
+const axios = require('axios');
 const mongoose = require('mongoose');
 const request = require('supertest');
 const app = require('../../src/app');
@@ -7,12 +8,20 @@ const {
   PRODUCT_MOCK_INSTANCE,
   PRODUCT_MOCK_PAYLOAD,
   PRODUCT_ORDER_MOCK_PAYLOAD,
-} = require('../mocks/products');
+} = require('../mocks/products.mock');
 
 describe('Testing products CRUD', () => {
+  let token = 'Bearer ';
   beforeAll(async () => {
     await mongoose.connect('mongodb://root:secret@127.0.0.1:27018/test_ecomm_products?authSource=admin');
     await ProductsModel.create(PRODUCT_MOCK_PAYLOAD);
+
+    const response = await axios.post('http://127.0.0.1:3002/api/login', {
+      email: 'adsongoliveira2022@outlook.com',
+      password: '@Raven132pp87',
+    });
+
+    token += response.data.token;
   });
 
   afterAll(async () => {
@@ -35,11 +44,12 @@ describe('Testing products CRUD', () => {
   it('POST: A product should be created', async () => {
     const response = await request(app)
       .post('/api/products')
+      .set('Authorization', token)
       .send(PRODUCT_MOCK_PAYLOAD)
       .expect(HTTPStatus.CREATED);
 
     expect(response.body).toHaveProperty('_id');
-    expect(response.body).toHaveProperty('category_id');
+    expect(response.body).toHaveProperty('category');
     delete response.body._id;
     expect(response.body).toEqual(PRODUCT_MOCK_PAYLOAD);
   });
@@ -48,6 +58,7 @@ describe('Testing products CRUD', () => {
     const properties = ['product', 'price', 'quantity'];
     const responseCreate = await request(app)
       .post('/api/products')
+      .set('Authorization', token)
       .send(PRODUCT_MOCK_PAYLOAD)
       .expect(HTTPStatus.CREATED);
 
@@ -73,16 +84,18 @@ describe('Testing products CRUD', () => {
 
     const responsePost = await request(app)
       .post('/api/products')
+      .set('Authorization', token)
       .send(PRODUCT_MOCK_PAYLOAD)
       .expect(HTTPStatus.CREATED);
 
     const responsePut = await request(app)
       .put(`/api/products/${responsePost.body._id}`)
+      .set('Authorization', token)
       .send(NEW_PRODUCT_MOCK_PAYLOAD)
       .expect(HTTPStatus.OK);
 
     expect(responsePut.body).toHaveProperty('_id');
-    expect(responsePut.body).toHaveProperty('category_id');
+    expect(responsePut.body).toHaveProperty('category');
     delete responsePut.body._id;
     expect(responsePut.body).toEqual(NEW_PRODUCT_MOCK_PAYLOAD);
   });
@@ -90,6 +103,7 @@ describe('Testing products CRUD', () => {
   it('DELETE: A product should be deleted', async () => {
     const response = await request(app)
       .post('/api/products')
+      .set('Authorization', token)
       .send(PRODUCT_MOCK_PAYLOAD)
       .expect(HTTPStatus.CREATED);
 

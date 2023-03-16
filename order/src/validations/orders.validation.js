@@ -14,10 +14,12 @@ const payload = (payloadOrder) => {
       .required(),
     productList: JOI.array().items(JOI.object({
       productId: JOI.string().required(),
+      productName: JOI.string().required(),
       quantity: JOI.number().required(),
       discount: JOI.number().required(),
       actualUnitPrice: JOI.number().required(),
     })).required(),
+    status: JOI.string().required(),
   }).validate(payloadOrder);
 
   if (error) throw customError(error.message, HTTPStatus.UN_ENTITY);
