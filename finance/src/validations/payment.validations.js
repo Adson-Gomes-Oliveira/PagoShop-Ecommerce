@@ -30,7 +30,7 @@ const confirmPaymentValidation = (payload) => {
         state: JOI.string().min(2).max(2).pattern(/^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)$/)
           .required(),
       },
-      ordersList: JOI.array().items(JOI.object({
+      productsOrdered: JOI.array().items(JOI.object({
         product: JOI.string().required(),
         quantity: JOI.number().required(),
         price: JOI.number().required(),
