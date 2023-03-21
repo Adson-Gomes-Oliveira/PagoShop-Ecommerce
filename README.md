@@ -23,7 +23,7 @@ HTTP para fazer os clones `git clone https://github.com/Adson-Gomes-Oliveira/Eco
 > Entre na pasta que foi criada e dentro de cada pasta você criará um arquivo com o nome **.env** contendo as variaveis descritas no
 arquivo env.example.txt. a variavel JWT_SECRET se refere ao segredo do middleware de autenticação, digite algum segredo seguro
 e o sistema estará pronto para uso, as outras variaveis se referem aos bancos de dados, dai você preencherá com as informações do banco
-na sua máquina, este projeto utiliza MySQL e MongoDB.
+na sua máquina, este projeto utiliza MySQL e MongoDB. ~**NÃO MUDE OS VALORES PADRÃO**.
   
 > No diretorio do frontend o env.example.txt já vem com valores padrão preenchidos, não é necessário alterar, apenas mude o nome
 do arquivo para **.env**.
