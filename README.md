@@ -86,7 +86,6 @@ HTTP para fazer os clones `git clone https://github.com/Adson-Gomes-Oliveira/Eco
 <h4>INFORMAÇÕES ADICIONAIS</h4>
 
 - Projeto desenvolvido somente para desktop
-- Melhorias Clean Code podem ser mais implementadas
 - Projeto ainda não finalizado
 <br />
 
