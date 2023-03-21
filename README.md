@@ -72,6 +72,8 @@ HTTP para fazer os clones `git clone https://github.com/Adson-Gomes-Oliveira/Eco
 - [ ] Fluxo de administrador
 - [ ] Refresh do Token
 - [ ] Implementação de cargos
+- [ ] Cobertura de Testes 80%
+
 <br />
 <h4>INFORMAÇÕES ADICIONAIS</h4>
 
