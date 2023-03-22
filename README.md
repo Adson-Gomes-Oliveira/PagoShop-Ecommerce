@@ -38,7 +38,7 @@ do arquivo para **.env**.
 
 </details>
 <details>
-<summary>:whale: Utilizando o Docker</summary>
+<summary>:whale: Utilizando o Docker [ RECOMENDADO ]</summary>
 <br>
 
 > Primeiro realize o clone deste repositório `git clone git@github.com:Adson-Gomes-Oliveira/Ecommerce.git`, Caso utilize
