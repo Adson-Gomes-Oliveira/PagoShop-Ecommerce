@@ -87,6 +87,10 @@ HTTP para fazer os clones `git clone https://github.com/Adson-Gomes-Oliveira/Eco
 
 - Projeto desenvolvido somente para desktop
 - Projeto ainda não finalizado
+- Todos os microserviços se encontram em apenas um repositório para facilitar
+o acesso, execução e tracking de commits, mas os serviços são auto-contidos
+e podem ser colocados em diferentes repositórios.
+
 <br />
 
 ---
