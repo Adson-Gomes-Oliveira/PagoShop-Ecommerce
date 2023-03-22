@@ -51,6 +51,20 @@ HTTP para fazer os clones `git clone https://github.com/Adson-Gomes-Oliveira/Eco
 > Pronto, já pode utilizar, obrigado :D
 
 </details>
+<details>
+<summary>:floppy_disk: Populando o banco</summary>
+<br>
+
+> Nos serviços **product** e **account** existe uma pasta chamada seeders, lá tem as operações necessárias para
+popular o banco, devem ser utilizadas em conjunto com a extensão MongoDB para VsCode.
+
+> Nos serviços **order** e **finance** basta executar `npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx-sequelize-cli db:seed:all`.
+
+> É possivel popular manualmente os bancos utilizando as endpoints também.
+
+> Pronto, já pode utilizar, obrigado :D
+
+</details>
 <br />
 <h4>TECNOLOGIAS UTILIZADAS</h4>
 <br />
