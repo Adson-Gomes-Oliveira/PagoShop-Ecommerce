@@ -8,7 +8,7 @@ services:
     volumes:
       - ./product/:/app/product
     environment:
-      - JWT_SECRET=senhasecretadodocker
+      - JWT_SECRET=c3RhcndhcnNtZWxob3JxdWVzdGFydHJlaw==
       - PORT=3001
       - DB_HOST=mongo-database
     depends_on:
@@ -21,7 +21,7 @@ services:
     volumes:
       - ./account:/app/account
     environment:
-      - JWT_SECRET=senhasecretadodocker
+      - JWT_SECRET=c3RhcndhcnNtZWxob3JxdWVzdGFydHJlaw==
       - PORT=3002
       - DB_HOST=mongo-database
       - REDIS_HOST=redis-database
@@ -36,7 +36,7 @@ services:
     volumes:
       - ./order:/app/order
     environment:
-      - JWT_SECRET=senhasecretadodocker
+      - JWT_SECRET=c3RhcndhcnNtZWxob3JxdWVzdGFydHJlaw==
       - PORT=3003
       - DB_HOST=mysql-database
       - PAYMENT_HOST=finance-container
@@ -52,7 +52,7 @@ services:
     volumes:
       - ./finance:/app/finance
     environment:
-      - JWT_SECRET=senhasecretadodocker
+      - JWT_SECRET=c3RhcndhcnNtZWxob3JxdWVzdGFydHJlaw==
       - PORT=3004
       - DB_HOST=mysql-database
     depends_on:
@@ -127,7 +127,7 @@ services:
     volumes:
       - mysql-ecomm-volume:/var/lib/mysql
   redis-database:
-    container_name: 'redis_ecomm'
+    container_name: 'redis-ecomm'
     image: redis:7
     ports:
       - 6379:6379
@@ -148,6 +148,11 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=secret
+  redis-test-database:
+    container_name: 'redis-ecomm-test'
+    image: redis:7
+    ports:
+      - 6380:6380
 volumes:
   mysql-ecomm-volume:
   mongo-ecomm-volume:
