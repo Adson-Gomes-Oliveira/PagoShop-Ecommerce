@@ -6,8 +6,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Installing Dependencies
+      - name: Installing Dependencies On Products
         working-directory: product
+        run: npm install
+      - name: Installing Dependencies On Accounts
+        working-directory: account
+        run: npm install
+      - name: Installing Dependencies On Order
+        working-directory: order
+        run: npm install
+      - name: Installing Dependencies On Finance
+        working-directory: finance
         run: npm install
       # - name: Testing Products
       #   run: docker ps -a
