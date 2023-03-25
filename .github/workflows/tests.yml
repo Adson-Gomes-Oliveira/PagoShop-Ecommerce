@@ -12,5 +12,5 @@ jobs:
         run: npm install jest 
       - name: Testing Products
         working-directory: product
-        run: npm test
+        run: docker exec product-ecomm npm test
     
