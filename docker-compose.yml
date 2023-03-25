@@ -107,16 +107,16 @@ services:
   #     - order-container
   #     - finance-container
   #     - product-container
-  # mongo-database:
-  #   container_name: 'mongo-ecomm'
-  #   image: mongo:5
-  #   ports:
-  #     - 27017:27017
-  #   environment:
-  #     - MONGO_INITDB_ROOT_USERNAME=root
-  #     - MONGO_INITDB_ROOT_PASSWORD=secret
-  #   volumes:
-  #     - mongo-ecomm-volume:/var/lib/mysql
+  mongo-database:
+    container_name: 'mongo-ecomm'
+    image: mongo:5
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+    volumes:
+      - mongo-ecomm-volume:/var/lib/mysql
   # mysql-database:
   #   container_name: 'mysql-ecomm'
   #   image: mysql:8
