@@ -1,0 +1,22 @@
+name: Ecommerce PagoShop Build
+on: ['push', 'pull_request']
+jobs:
+  build-product:
+    name: Product Service Build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ../../product/
+    container: node:18-alpine
+    steps:
+      - run: node --version
+        name: Check Node Version
+      - run: npm --version
+        name: Check NPM Version
+      - uses: actions/checkout@v3
+        name: Checkout code
+      - run: npm install
+        name: Install NPM packages
+      - run: npm start
+        name: Start Application
+
