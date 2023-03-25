@@ -24,8 +24,6 @@ jobs:
       - name: Installing Dependencies On Finance
         working-directory: finance
         run: npm install
-      - run: npm start
-        working-directory: product
       - name: Testing Products
         working-directory: product
         run: npm test
