@@ -8,7 +8,7 @@ jobs:
       - name: Building Ecommerce PagoShop Enviroment
         run: docker-compose up -d --build
       - name: Testing Products
-        working-directory: products
+        working-directory: product
         run: npx eslint
         run: npm test
     
