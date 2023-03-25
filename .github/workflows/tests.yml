@@ -9,7 +9,7 @@ jobs:
       - name: Starting Mongo Container
         run: docker run --name mongo-test-container -d -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME='root' -e MONGO_INITDB_ROOT_PASSWORD='secret' mongo:5
       - name: Starting MySQL Container
-        run: docker-compose start mysql-test-database
+        run: docker run --name mysql-test-container -d -p 3307:3306 -e MYSQL_ROOT_PASSWORD='secret' mysql:8
       - name: Starting Redis Container
         run: docker-compose start redis-database
       - name: Installing Dependencies On Products
