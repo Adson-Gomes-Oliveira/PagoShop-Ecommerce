@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: docker-compose up
+      - run: docker-compose up -d
       - run: docker exec product-ecomm npm test
       # - name: Starting Mongo Container
       #   run: docker run --name mongo-test-database -d -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME='root' -e MONGO_INITDB_ROOT_PASSWORD='secret' mongo:5
