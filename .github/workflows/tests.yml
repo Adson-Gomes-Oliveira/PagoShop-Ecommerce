@@ -3,6 +3,7 @@ on: ['push', 'pull_request']
 jobs:
   tests-pagoshop:
     name: Running all tests for Application
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Building Ecommerce PagoShop Enviroment
