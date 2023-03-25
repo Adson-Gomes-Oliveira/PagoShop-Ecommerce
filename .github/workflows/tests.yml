@@ -10,6 +10,8 @@ jobs:
         run: docker-compose up -d --build
       - name: Testing Products
         run: docker ps -a
+      - name: Testing Products
         run: docker ps -a
+      - name: Testing Products
         run: docker ps -a
     
