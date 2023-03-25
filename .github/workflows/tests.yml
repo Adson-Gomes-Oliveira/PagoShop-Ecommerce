@@ -6,12 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Building Ecommerce PagoShop Enviroment
-        run: docker-compose up -d --build
-      - name: Testing Products
-        run: docker ps -a
-      - name: Testing Products
-        run: docker ps -a
-      - name: Testing Products
-        run: docker ps -a
+      - name: Installing Dependencies
+        working-directory: product
+        run: npm install
+      # - name: Testing Products
+      #   run: docker ps -a
+      # - name: Testing Products
+      #   run: docker ps -a
+      # - name: Testing Products
+      #   run: docker exec product-ecomm npm test
     
