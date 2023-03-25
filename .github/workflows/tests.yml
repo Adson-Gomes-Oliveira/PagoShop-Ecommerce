@@ -1,18 +1,14 @@
 name: Ecommerce PagoShop Tests
 on: ['push', 'pull_request']
 jobs:
-  check-lint:
-    name: Checking lint errors
-    runs-on: ubuntu-latest
-    container: node:18
+  tests-pagoshop:
+    name: Running all tests for Application
     steps:
-      - run: npx eslint
-        name: Searching for errors
-  test-products:
-    name: Testing Products Services
-    runs-on: ubuntu-latest
-    container: node:18
-    steps:
-      - run: npm test
-        working-directory: product
-        name: Testing Products
+      - uses: actions/checkout@v3
+      - name: Building Ecommerce PagoShop Enviroment
+        run: docker-compose up -d --build
+      - name: Testing Products
+        working-directory: products
+        run: npx eslint
+        run: npm test
+    
