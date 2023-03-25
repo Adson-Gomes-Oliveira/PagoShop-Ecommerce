@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Starting Mongo Container
-        run: docker-compose start mongo-test-database
+        run: docker run --name mongo-test-container -d -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME='root' -e MONGO_INITDB_ROOT_PASSWORD='secret' mongo:5
       - name: Starting MySQL Container
         run: docker-compose start mysql-test-database
       - name: Starting Redis Container
