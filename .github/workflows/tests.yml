@@ -6,6 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Starting Mongo Container
+        run: docker-compose start mongo-test-database
+      - name: Starting MySQL Container
+        run: docker-compose start mysql-test-database
+      - name: Starting Redis Container
+        run: docker-compose start redis-database
       - name: Installing Dependencies On Products
         working-directory: product
         run: npm install
