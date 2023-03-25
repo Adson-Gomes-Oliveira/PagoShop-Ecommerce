@@ -3,6 +3,7 @@ services:
   product-container:
     container_name: product-ecomm
     build: ./product/
+    platform: linux/amd64
     ports:
       - 3001:3001
     volumes:
@@ -16,6 +17,7 @@ services:
   account-container:
     container_name: account-ecomm
     build: ./account/
+    platform: linux/amd64
     ports:
       - 3002:3002
     volumes:
@@ -31,6 +33,7 @@ services:
   order-container:
     container_name: order-ecomm
     build: ./order/
+    platform: linux/amd64
     ports:
       - 3003:3003
     volumes:
@@ -47,6 +50,7 @@ services:
   finance-container:
     container_name: finance-ecomm
     build: ./finance/
+    platform: linux/amd64
     ports:
       - 3004:3004
     volumes:
@@ -60,6 +64,7 @@ services:
   frontend-container:
     container_name: frontend-ecomm
     build: ./frontend/
+    platform: linux/amd64
     ports:
       - 3000:3000
     volumes:
