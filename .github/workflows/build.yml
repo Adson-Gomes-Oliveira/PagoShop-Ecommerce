@@ -9,6 +9,7 @@ jobs:
         working-directory: product
     container: node:18-alpine
     steps:
+      - run: ls
       - run: node --version
         name: Check Node Version
       - run: npm --version
