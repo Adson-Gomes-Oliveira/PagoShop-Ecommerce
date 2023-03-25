@@ -8,7 +8,7 @@ services:
     volumes:
       - ./product/:/app/product
     environment:
-      - JWT_SECRET=senhasecretadodocker
+      - JWT_SECRET=c3RhcndhcnNtZWxob3JxdWVzdGFydHJlaw==
       - PORT=3001
       - DB_HOST=mongo-database
     depends_on:
@@ -21,7 +21,7 @@ services:
     volumes:
       - ./account:/app/account
     environment:
-      - JWT_SECRET=senhasecretadodocker
+      - JWT_SECRET=c3RhcndhcnNtZWxob3JxdWVzdGFydHJlaw==
       - PORT=3002
       - DB_HOST=mongo-database
       - REDIS_HOST=redis-database
@@ -36,7 +36,7 @@ services:
     volumes:
       - ./order:/app/order
     environment:
-      - JWT_SECRET=senhasecretadodocker
+      - JWT_SECRET=c3RhcndhcnNtZWxob3JxdWVzdGFydHJlaw==
       - PORT=3003
       - DB_HOST=mysql-database
       - PAYMENT_HOST=finance-container
@@ -52,7 +52,7 @@ services:
     volumes:
       - ./finance:/app/finance
     environment:
-      - JWT_SECRET=senhasecretadodocker
+      - JWT_SECRET=c3RhcndhcnNtZWxob3JxdWVzdGFydHJlaw==
       - PORT=3004
       - DB_HOST=mysql-database
     depends_on:
@@ -66,24 +66,40 @@ services:
       - ./frontend/:/app/frontend
     environment:
       # products_envs
-      - REACT_APP_PRODUCTS_HOST=product-container
+      - REACT_APP_PRODUCTS_HOST=127.0.0.1
       - REACT_APP_PRODUCTS_PORT=3001
       - REACT_APP_PRODUCTS_BASEURL=api/products
 
     # categories_envs
-      - REACT_APP_CATEGORIES_HOST=product-container
+      - REACT_APP_CATEGORIES_HOST=127.0.0.1
       - REACT_APP_CATEGORIES_PORT=3001
       - REACT_APP_CATEGORIES_BASEURL=api/categories
 
     # login_envs
-      - REACT_APP_LOGIN_HOST=account-container
+      - REACT_APP_LOGIN_HOST=127.0.0.1
       - REACT_APP_LOGIN_PORT=3002
       - REACT_APP_LOGIN_BASEURL=api/accounts/login
 
     # logout_envs
-      - REACT_APP_LOGOUT_HOST=account-container
+      - REACT_APP_LOGOUT_HOST=127.0.0.1
       - REACT_APP_LOGOUT_PORT=3002
       - REACT_APP_LOGOUT_BASEURL=api/accounts/logout
+
+    # orders_envs
+      - REACT_APP_ORDERS_HOST=127.0.0.1
+      - REACT_APP_ORDERS_PORT=3003
+      - REACT_APP_ORDERS_BASEURL=api/orders
+      - REACT_APP_ORDERS_CONFIRM_RESOURCE=/confirm
+
+    # accounts_envs
+      - REACT_APP_ACCOUNTS_HOST=127.0.0.1
+      - REACT_APP_ACCOUNTS_PORT=3002
+      - REACT_APP_ACCOUNTS_BASEURL=api/accounts
+
+    # payments_envs
+      - REACT_APP_PAYMENTS_HOST=127.0.0.1
+      - REACT_APP_PAYMENTS_PORT=3004
+      - REACT_APP_PAYMENTS_BASEURL=api/payments
     depends_on:
       - mongo-database
       - mysql-database
@@ -111,7 +127,7 @@ services:
     volumes:
       - mysql-ecomm-volume:/var/lib/mysql
   redis-database:
-    container_name: 'redis_ecomm'
+    container_name: 'redis-ecomm'
     image: redis:7
     ports:
       - 6379:6379
@@ -132,6 +148,11 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=secret
+  redis-test-database:
+    container_name: 'redis-ecomm-test'
+    image: redis:7
+    ports:
+      - 6380:6380
 volumes:
   mysql-ecomm-volume:
   mongo-ecomm-volume:
