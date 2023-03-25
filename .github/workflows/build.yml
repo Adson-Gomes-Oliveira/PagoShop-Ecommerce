@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ../../product/
+        working-directory: product
     container: node:18-alpine
     steps:
       - run: node --version
