@@ -4,7 +4,6 @@ jobs:
   tests-pagoshop:
     name: PagoShop Tests
     runs-on: ubuntu-latest
-    container: node:18
     steps:
       - uses: actions/checkout@v3
       - name: Starting Mongo Container
