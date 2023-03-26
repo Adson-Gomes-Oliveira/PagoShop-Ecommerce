@@ -1,0 +1,54 @@
+name: Ecommerce PagoShop Tests
+on: ['push', 'pull_request']
+jobs:
+  tests-pagoshop:
+    name: PagoShop Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Starting Mongo Container
+        run: docker run --name mongo-test-database -d -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME='root' -e MONGO_INITDB_ROOT_PASSWORD='secret' mongo:5
+      - name: Starting MySQL Container
+        run: docker run --name mysql-test-database -d -p 3307:3306 -e MYSQL_ROOT_PASSWORD='secret' mysql:8
+      - name: Starting Redis Container
+        run: docker run --name redis-database -d -p 6379:6379 redis:7
+      - name: Installing Dependencies On Products
+        working-directory: product
+        run: npm install
+      - name: Installing Dependencies On Accounts
+        working-directory: account
+        run: npm install
+      - name: Installing Dependencies On Order
+        working-directory: order
+        run: npm install
+      - name: Installing Dependencies On Finance
+        working-directory: finance
+        run: npm install
+      - name: Running Products
+        working-directory: product
+        run: npm start &
+      - name: Running Accounts
+        working-directory: account
+        run: npm start &
+      - name: Setuping Account for Tests
+        run: node src/seeders/create.admin.js
+        working-directory: account
+      - name: Running Order
+        working-directory: order
+        run: npm start &
+      - name: Running Finance
+        working-directory: finance
+        run: npm start &
+      - name: Testing Products
+        working-directory: product
+        run: npm test
+      - name: Testing Accounts
+        working-directory: account
+        run: npm test
+      - name: Testing Order
+        working-directory: order
+        run: npm test
+      - name: Testing Finance
+        working-directory: finance
+        run: npm test
+    
