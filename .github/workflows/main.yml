@@ -31,7 +31,7 @@ jobs:
         working-directory: account
         run: npm start &
       - name: Setuping Account for Tests
-        run: node src/helpers/create.admin.js
+        run: node src/seeders/create.admin.js
         working-directory: account
       - name: Running Order
         working-directory: order
