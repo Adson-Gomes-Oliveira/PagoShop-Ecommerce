@@ -2,8 +2,9 @@ name: Ecommerce PagoShop Tests
 on: ['push', 'pull_request']
 jobs:
   tests-pagoshop:
-    name: Running all tests for Application
+    name: PagoShop Tests
     runs-on: ubuntu-latest
+    container: node:14
     steps:
       - uses: actions/checkout@v3
       - name: Starting Mongo Container
@@ -24,6 +25,18 @@ jobs:
       - name: Installing Dependencies On Finance
         working-directory: finance
         run: npm install
+      - name: Running Products
+        working-directory: product
+        run: npm start &
+      - name: Running Accounts
+        working-directory: account
+        run: npm start &
+      - name: Running Order
+        working-directory: order
+        run: npm start &
+      - name: Running Finance
+        working-directory: finance
+        run: npm start &
       - name: Testing Products
         working-directory: product
         run: npm test
