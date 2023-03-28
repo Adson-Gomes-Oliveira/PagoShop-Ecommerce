@@ -14,6 +14,7 @@ services:
       - ACCOUNT_HOST=account-container
       - ORDER_HOST=order-container
       - PAYMENT_HOST=finance-container
+      - REDIS_HOST=redis-database
     depends_on:
       - product-container
       - account-container
@@ -43,7 +44,6 @@ services:
       - JWT_SECRET=c3RhcndhcnNtZWxob3JxdWVzdGFydHJlaw==
       - PORT=3002
       - DB_HOST=mongo-database
-      - REDIS_HOST=redis-database
     depends_on:
       - mongo-database
       - redis-database
@@ -114,7 +114,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=secret
     volumes:
-      - mongo-ecomm-volume:/var/lib/mysql
+      - mongo-ecomm-volume:\data\db
   mysql-database:
     container_name: 'mysql-ecomm'
     image: mysql:8
