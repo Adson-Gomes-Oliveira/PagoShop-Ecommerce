@@ -1,5 +1,24 @@
 version: "3.9"
 services:
+  gateway-container:
+    container_name: gateway-ecomm
+    build: ./gateway/
+    ports:
+      - 5000:5000
+    volumes:
+      - ./gateway/:/app/gateway
+    environment:
+      - JWT_SECRET=c3RhcndhcnNtZWxob3JxdWVzdGFydHJlaw==
+      - PORT=5000
+      - PRODUCT_HOST=product-container
+      - ACCOUNT_HOST=account-container
+      - ORDER_HOST=order-container
+      - PAYMENT_HOST=finance-container
+    depends_on:
+      - product-container
+      - account-container
+      - order-container
+      - finance-container
   product-container:
     container_name: product-ecomm
     build: ./product/
