@@ -14,7 +14,7 @@ const login = async (req, res) => {
     });
 };
 
-const loggout = async (req, res) => {
+const logout = async (req, res) => {
   const { token } = req;
   await addToken(token);
 
@@ -23,5 +23,5 @@ const loggout = async (req, res) => {
 
 module.exports = {
   login,
-  loggout,
+  logout,
 };
