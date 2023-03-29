@@ -1,4 +1,4 @@
-<div align="center"><h1>Ecommerce PagoShop</h1></div>
+<div align="center"><h1>PagoShop Ecommerce</h1></div>
 <br />
 <div align="center"><img src="https://i.ibb.co/b7VBBFn/Capture.png" alt="thumbnail" /></div>
 <br />
