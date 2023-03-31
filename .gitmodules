@@ -10,3 +10,6 @@
 [submodule "pagoshop-ms-payment"]
 	path = pagoshop-ms-payment
 	url = git@github.com:Adson-Gomes-Oliveira/pagoshop-ms-payment.git
+[submodule "pagoshop-ms-gateway"]
+	path = pagoshop-ms-gateway
+	url = git@github.com:Adson-Gomes-Oliveira/pagoshop-ms-gateway.git
