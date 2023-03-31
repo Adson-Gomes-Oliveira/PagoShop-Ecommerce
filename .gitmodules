@@ -4,3 +4,6 @@
 [submodule "pagoshop-ms-account"]
 	path = pagoshop-ms-account
 	url = git@github.com:Adson-Gomes-Oliveira/pagoshop-ms-account.git
+[submodule "pagoshop-ms-order"]
+	path = pagoshop-ms-order
+	url = git@github.com:Adson-Gomes-Oliveira/pagoshop-ms-order.git
