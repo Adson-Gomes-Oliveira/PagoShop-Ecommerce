@@ -1,18 +1,18 @@
-[submodule "pagoshop-ms-product"]
-	path = pagoshop-ms-product
-	url = git@github.com:Adson-Gomes-Oliveira/pagoshop-ms-product.git
-[submodule "pagoshop-ms-account"]
-	path = pagoshop-ms-account
-	url = git@github.com:Adson-Gomes-Oliveira/pagoshop-ms-account.git
-[submodule "pagoshop-ms-order"]
-	path = pagoshop-ms-order
-	url = git@github.com:Adson-Gomes-Oliveira/pagoshop-ms-order.git
-[submodule "pagoshop-ms-payment"]
-	path = pagoshop-ms-payment
-	url = git@github.com:Adson-Gomes-Oliveira/pagoshop-ms-payment.git
-[submodule "pagoshop-ms-gateway"]
-	path = pagoshop-ms-gateway
-	url = git@github.com:Adson-Gomes-Oliveira/pagoshop-ms-gateway.git
-[submodule "pagoshop-frontend"]
-	path = pagoshop-frontend
-	url = git@github.com:Adson-Gomes-Oliveira/pagoshop-frontend.git
+[submodule "trooper-ms-product"]
+	path = trooper-ms-product
+	url = git@github.com:Adson-Gomes-Oliveira/trooper-ms-product.git
+[submodule "trooper-ms-account"]
+	path = trooper-ms-account
+	url = git@github.com:Adson-Gomes-Oliveira/trooper-ms-account.git
+[submodule "trooper-ms-order"]
+	path = trooper-ms-order
+	url = git@github.com:Adson-Gomes-Oliveira/trooper-ms-order.git
+[submodule "trooper-ms-payment"]
+	path = trooper-ms-payment
+	url = git@github.com:Adson-Gomes-Oliveira/trooper-ms-payment.git
+[submodule "trooper-ms-gateway"]
+	path = trooper-ms-gateway
+	url = git@github.com:Adson-Gomes-Oliveira/trooper-ms-gateway.git
+[submodule "trooper-frontend"]
+	path = trooper-frontend
+	url = git@github.com:Adson-Gomes-Oliveira/trooper-frontend.git
