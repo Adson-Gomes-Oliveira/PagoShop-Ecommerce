@@ -7,15 +7,30 @@
 <br />
 <br />
 <h4>INSTRUÇÕES DE INSTALAÇÃO</h4>
-<details open>
+<details>
 <summary>:computer: Instalação Local</summary>
 <br>
-Well, you asked for it!
+
+> Clone este repositório na sua maquina: `git clone git@github.com:Adson-Gomes-Oliveira/Trooper-Ecommerce.git`
+
+> Agora faça o clone dos submodulos: `git submodule init && git submodule update`
+
+> Instale as dependências necessárias em cada submodulo: `cd scripts && bash installDependencies.sh && cd ..`
+
+> Inicie todos os servidores: `cd scripts && bash initiateServers.sh && cd ..`
+
+> o frontend estará rodando na porta 3000 e o gateway na 5000
 </details>
-<details open>
+<details>
 <summary>:whale: Utilizando o Docker</summary>
 <br>
-Well, you asked for it!
+
+> Clone este repositório na sua maquina: `git clone git@github.com:Adson-Gomes-Oliveira/Trooper-Ecommerce.git`
+
+> Agora execute os containers: `cd scripts && bash UpContainers.sh && cd ..`
+
+> o frontend estará rodando na porta 3000 e o gateway na 5000
+<br>
 </details>
 <br />
 <h4>TECNOLOGIAS UTILIZADAS</h4>
