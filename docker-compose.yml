@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  rabbit-ms-gateway:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbit-gateway-volume-data:/var/lib/rabbitmq/
+      - rabbit-gateway-volume-log:/var/log/rabbitmq
+
+volumes:
+  rabbit-gateway-volume-data:
+  rabbit-gateway-volume-log:
+
+networks: 
+  default:
+    name: trooper-network
+    external: true

@@ -3,8 +3,11 @@
 # Create network
 docker network create trooper-network
 
+# Up rabbit container
+cd ../ && docker-compose up -d --build
+
 # Up product container
-cd ../trooper-ms-product && docker-compose up -d --build
+cd trooper-ms-product && docker-compose up -d --build
 
 # Up account container
 cd ../trooper-ms-account && docker-compose up -d --build
