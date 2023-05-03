@@ -57,9 +57,9 @@
 - [x] Cobertura de testes 90% +
 - [x] API Gateway
 - [x] Mensageria
-- [ ] Frontend
+- [x] Frontend
 - [x] Actions
-- [ ] Deploy em cloud
+- [x] Deploy em cloud
 <br />
 <h4>INFORMAÇÕES ADICIONAIS</h4>
 
