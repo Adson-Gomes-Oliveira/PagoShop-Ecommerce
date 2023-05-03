@@ -32,6 +32,18 @@
 > o frontend estará rodando na porta 3000 e o gateway na 5000
 <br>
 </details>
+<details>
+<summary>:floppy_disk: Populando o Banco</summary>
+<br>
+
+> No serviço de products, entre na pasta src > sedders e utilize mongoosh para popular o banco com os arquivos ali incluídos
+
+> No serviço de accounts, entre na pasta src > sedders e utilize mongoosh para popular o banco com os arquivos ali incluídos
+
+> No serviço de orders, após o npm install ser realizado com sucesso execute `npm run pre-start`
+
+> No serviço de payments, após o npm install ser realizado com sucesso execute `npm run pre-start`
+</details>
 <br />
 <h4>TECNOLOGIAS UTILIZADAS</h4>
 <br />
