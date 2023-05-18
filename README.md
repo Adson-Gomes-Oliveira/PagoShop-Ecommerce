@@ -72,10 +72,11 @@
 - [x] Frontend
 - [x] Actions
 - [x] Deploy em cloud
+- [ ] Corrigir pequenos bugs
 <br />
 <h4>INFORMAÇÕES ADICIONAIS</h4>
 
-- Projeto em constante desenvolvimento conforme eu, Adson Gomes Oliveira, evoluo meu conhecimento técnico.
+- Aplicação ainda não adaptada para dispositivos móveis
 <br />
 
 ---
