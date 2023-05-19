@@ -32,6 +32,18 @@
 > o frontend estará rodando na porta 3000 e o gateway na 5000
 <br>
 </details>
+<details>
+<summary>:floppy_disk: Populando o Banco</summary>
+<br>
+
+> No serviço de products, entre na pasta src > sedders e utilize mongoosh para popular o banco com os arquivos ali incluídos
+
+> No serviço de accounts, entre na pasta src > sedders e utilize mongoosh para popular o banco com os arquivos ali incluídos
+
+> No serviço de orders, após o npm install ser realizado com sucesso execute `npm run pre-start`
+
+> No serviço de payments, após o npm install ser realizado com sucesso execute `npm run pre-start`
+</details>
 <br />
 <h4>TECNOLOGIAS UTILIZADAS</h4>
 <br />
@@ -57,13 +69,14 @@
 - [x] Cobertura de testes 90% +
 - [x] API Gateway
 - [x] Mensageria
-- [ ] Frontend
+- [x] Frontend
 - [x] Actions
-- [ ] Deploy em cloud
+- [x] Deploy em cloud
+- [ ] Corrigir pequenos bugs
 <br />
 <h4>INFORMAÇÕES ADICIONAIS</h4>
 
-- Projeto em constante desenvolvimento conforme eu, Adson Gomes Oliveira, evoluo meu conhecimento técnico.
+- Aplicação ainda não adaptada para dispositivos móveis
 <br />
 
 ---
